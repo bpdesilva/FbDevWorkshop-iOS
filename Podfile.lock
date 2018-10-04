@@ -1,0 +1,116 @@
+PODS:
+  - AccountKit (4.35.0)
+  - Alamofire (4.7.3)
+  - Bolts (1.9.0):
+    - Bolts/AppLinks (= 1.9.0)
+    - Bolts/Tasks (= 1.9.0)
+  - Bolts/AppLinks (1.9.0):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.9.0)
+  - FacebookCore (0.4.0):
+    - Bolts (~> 1.9)
+    - FBSDKCoreKit (~> 4.36)
+  - FacebookLogin (0.4.0):
+    - Bolts (~> 1.9)
+    - FacebookCore (~> 0.4)
+    - FBSDKCoreKit (~> 4.36)
+    - FBSDKLoginKit (~> 4.36)
+  - FacebookShare (0.4.0):
+    - Bolts (~> 1.9)
+    - FacebookCore (~> 0.4)
+    - FBSDKCoreKit (~> 4.36)
+    - FBSDKShareKit (~> 4.36)
+  - FBSDKCoreKit (4.36.0):
+    - Bolts (~> 1.7)
+  - FBSDKLoginKit (4.36.0):
+    - FBSDKCoreKit
+  - FBSDKShareKit (4.36.0):
+    - FBSDKCoreKit (~> 4.36.0)
+  - Kingfisher (4.10.0)
+  - MaterialComponents/AnimationTiming (63.0.0)
+  - MaterialComponents/Cards (63.0.0):
+    - MaterialComponents/Ink
+    - MaterialComponents/private/Icons/ic_check_circle
+    - MaterialComponents/private/Math
+    - MaterialComponents/private/Shapes
+    - MaterialComponents/ShadowLayer
+  - MaterialComponents/Chips (63.0.0):
+    - MaterialComponents/Ink
+    - MaterialComponents/private/Math
+    - MaterialComponents/private/ShapeLibrary
+    - MaterialComponents/private/Shapes
+    - MaterialComponents/ShadowElevations
+    - MaterialComponents/ShadowLayer
+    - MaterialComponents/TextFields
+    - MaterialComponents/Typography
+    - MDFInternationalization
+  - MaterialComponents/Ink (63.0.0):
+    - MaterialComponents/private/Math
+  - MaterialComponents/Palettes (63.0.0)
+  - MaterialComponents/private/Application (63.0.0)
+  - MaterialComponents/private/Icons/Base (63.0.0)
+  - MaterialComponents/private/Icons/ic_check_circle (63.0.0):
+    - MaterialComponents/private/Icons/Base
+  - MaterialComponents/private/Math (63.0.0)
+  - MaterialComponents/private/ShapeLibrary (63.0.0):
+    - MaterialComponents/private/Math
+    - MaterialComponents/private/Shapes
+  - MaterialComponents/private/Shapes (63.0.0):
+    - MaterialComponents/private/Math
+    - MaterialComponents/ShadowLayer
+  - MaterialComponents/ShadowElevations (63.0.0)
+  - MaterialComponents/ShadowLayer (63.0.0):
+    - MaterialComponents/ShadowElevations
+  - MaterialComponents/TextFields (63.0.0):
+    - MaterialComponents/AnimationTiming
+    - MaterialComponents/Palettes
+    - MaterialComponents/private/Math
+    - MaterialComponents/Typography
+    - MDFInternationalization
+  - MaterialComponents/Typography (63.0.0):
+    - MaterialComponents/private/Application
+    - MaterialComponents/private/Math
+  - MDFInternationalization (1.1.0)
+
+DEPENDENCIES:
+  - AccountKit
+  - Alamofire (~> 4.7)
+  - FacebookCore
+  - FacebookLogin
+  - FacebookShare
+  - Kingfisher (~> 4.0)
+  - MaterialComponents/Cards
+  - MaterialComponents/Chips
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AccountKit
+    - Alamofire
+    - Bolts
+    - FacebookCore
+    - FacebookLogin
+    - FacebookShare
+    - FBSDKCoreKit
+    - FBSDKLoginKit
+    - FBSDKShareKit
+    - Kingfisher
+    - MaterialComponents
+    - MDFInternationalization
+
+SPEC CHECKSUMS:
+  AccountKit: 870ccaf5d33facda9408783e28fbe68c5211e069
+  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
+  FacebookCore: 770e57cfe250a4de4458b682191c0ff062dee247
+  FacebookLogin: eb0f2251aca835a94d70a5f7e580edc46d1e1603
+  FacebookShare: ec48492ba748f971c6a13661963f7aae38140111
+  FBSDKCoreKit: 3b8e6570eedb443f9fc4af196a7bf39f18e3a3d8
+  FBSDKLoginKit: 8bccb6064708ab2f4251a7fc4e3b6d8d00ad91ba
+  FBSDKShareKit: 7090fdd55c39b03941efddb64c83a64ff6b3949f
+  Kingfisher: 43c4b802d8b5256cf1f4379e9cd10b329be6d3e2
+  MaterialComponents: 4e0c0ee000e0dcbf5214b0054767ef9f8f812264
+  MDFInternationalization: b5b8626628abf026e630e5ebaeee563037712cbb
+
+PODFILE CHECKSUM: d7b31bb19a37c160bc4ca4cbea07c5c398ecf82d
+
+COCOAPODS: 1.5.3
