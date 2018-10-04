@@ -38,12 +38,16 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vdQ-b4-1Q7">
-                    <rect key="frame" x="339" y="209" width="20" height="20"/>
+                    <rect key="frame" x="329" y="199" width="40" height="40"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="20" id="KNc-fa-fe3"/>
-                        <constraint firstAttribute="width" constant="20" id="vPS-zb-HOB"/>
+                        <constraint firstAttribute="height" constant="40" id="KNc-fa-fe3"/>
+                        <constraint firstAttribute="width" constant="40" id="vPS-zb-HOB"/>
                     </constraints>
+                    <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                     <state key="normal" title="Button" image="icon_share"/>
+                    <connections>
+                        <action selector="btnShare_Tap:" destination="-1" eventType="touchUpInside" id="7bJ-SS-0eV"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="{source} - {author}" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hBC-yR-dq4">
                     <rect key="frame" x="16" y="235" width="335" height="19.5"/>
@@ -75,15 +79,15 @@
                 <constraint firstItem="hBC-yR-dq4" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="GkY-JA-2VZ"/>
                 <constraint firstItem="KB4-Lf-z0p" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="I5R-Wb-uKp"/>
                 <constraint firstItem="uas-fe-oeW" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="K1a-jk-G9G"/>
-                <constraint firstItem="vdQ-b4-1Q7" firstAttribute="leading" secondItem="KB4-Lf-z0p" secondAttribute="trailing" constant="16" id="MPk-cC-CAv"/>
+                <constraint firstItem="vdQ-b4-1Q7" firstAttribute="leading" secondItem="KB4-Lf-z0p" secondAttribute="trailing" constant="6" id="MPk-cC-CAv"/>
                 <constraint firstItem="KB4-Lf-z0p" firstAttribute="firstBaseline" secondItem="uas-fe-oeW" secondAttribute="bottom" constant="32" id="ScC-Gh-bkp"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="mQp-h7-F9z" secondAttribute="bottom" constant="8" id="Xpg-cL-7dL"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="hBC-yR-dq4" secondAttribute="trailing" constant="24" id="gUv-Ti-Kb9"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="vdQ-b4-1Q7" secondAttribute="trailing" constant="16" id="jXz-DF-MUN"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="vdQ-b4-1Q7" secondAttribute="trailing" constant="6" id="jXz-DF-MUN"/>
                 <constraint firstItem="mQp-h7-F9z" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="mYr-Nb-U0b"/>
                 <constraint firstItem="hBC-yR-dq4" firstAttribute="firstBaseline" secondItem="KB4-Lf-z0p" secondAttribute="baseline" constant="24" id="mag-A4-7ZI"/>
                 <constraint firstItem="YFB-JW-8Mk" firstAttribute="firstBaseline" secondItem="hBC-yR-dq4" secondAttribute="baseline" constant="16" id="p6n-6C-oA2"/>
-                <constraint firstItem="vdQ-b4-1Q7" firstAttribute="top" secondItem="uas-fe-oeW" secondAttribute="bottom" constant="15" id="ytw-d8-xgI"/>
+                <constraint firstItem="vdQ-b4-1Q7" firstAttribute="top" secondItem="uas-fe-oeW" secondAttribute="bottom" constant="5" id="ytw-d8-xgI"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

@@ -9,6 +9,7 @@
 import UIKit
 import MaterialComponents.MaterialCards
 import Kingfisher
+import FacebookShare
 
 class NewsTableViewCell: UITableViewCell {
     
@@ -62,6 +63,19 @@ class NewsTableViewCell: UITableViewCell {
         self.lblDescription.text = news.description
     }
 
+    @IBAction func btnShare_Tap(_ sender: Any) {
+        let content = LinkShareContent(url: URL(string: newsItem.url)!, quote: newsItem.title)
+        let shareDialog = ShareDialog(content: content)
+        shareDialog.mode = .automatic
+        shareDialog.failsOnInvalidData = true
+        shareDialog.completion = { result in
+            // Handle share results
+        }
+        
+        try! shareDialog.show()
+    }
+    
+    
 }
 
 class RoundedImageView: ImageView {
