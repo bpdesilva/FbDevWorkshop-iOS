@@ -19,6 +19,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var btnFacebook: UIButton!
     @IBOutlet weak var btnEmail: UIButton!
     @IBOutlet weak var imgPhone: UIImageView!
+    @IBOutlet weak var btnPhone: UIButton!
     
     var fromAccountKit = false
     
@@ -36,6 +37,7 @@ class LoginViewController: UIViewController {
         super.viewWillAppear(animated)
         self.btnFacebook.layer.cornerRadius = 5
         self.btnEmail.layer.cornerRadius = 5
+        self.btnPhone.layer.cornerRadius = 5
     }
     
     // MARK: - Actions
