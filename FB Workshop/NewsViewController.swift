@@ -8,7 +8,6 @@
 
 import UIKit
 import MaterialComponents.MaterialCards
-import FacebookCore
 
 class NewsViewController: UIViewController {
     
@@ -68,7 +67,7 @@ class NewsViewController: UIViewController {
         if let link = URL(string: newsItem.url) {
             UIApplication.shared.open(link)
         }
-        AppEventsLogger.log(AppEvent.viewedContent(contentType: self.titleStr, contentId: newsItem.title, contentData: nil, currency: nil, valueToSum: 0, extraParameters: AppEvent.ParametersDictionary()))
+        // TODO: - Add Viewed Content App Event
     }
 
 }

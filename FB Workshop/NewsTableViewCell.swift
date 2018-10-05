@@ -9,8 +9,6 @@
 import UIKit
 import MaterialComponents.MaterialCards
 import Kingfisher
-import FacebookShare
-import FacebookCore
 
 class NewsTableViewCell: UITableViewCell {
     
@@ -65,22 +63,10 @@ class NewsTableViewCell: UITableViewCell {
     }
 
     @IBAction func btnShare_Tap(_ sender: Any) {
-        let content = LinkShareContent(url: URL(string: newsItem.url)!, quote: newsItem.title)
-        let shareDialog = ShareDialog(content: content)
-        shareDialog.mode = .automatic
-        shareDialog.failsOnInvalidData = true
-        shareDialog.completion = { result in
-            // Handle share results
-        }
-        
-        let params : AppEvent.ParametersDictionary = [
-            "title" : self.newsItem.title,
-            "source" : self.newsItem.source.name
-        ]
-        let event = AppEvent(name: "shared", parameters: params)
-        AppEventsLogger.log(event)
-        
-        try! shareDialog.show()
+        // TODO: - Add Share Logic
+
+        // TODO: - Add custom share app event
+
     }
     
     

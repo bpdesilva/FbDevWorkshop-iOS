@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FacebookCore
 import MaterialComponents.MaterialChips
 import Kingfisher
 
@@ -41,24 +40,7 @@ class InterestViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.lblGreeting.text = "Good \(getGreeting())"
-        if fromAccountKit {
-            self.imageWidthConstraint.constant = 1.0
-            self.lblGreeting.textAlignment = .center
-        } else {
-            let connection = GraphRequestConnection()
-            connection.add(ProfileRequest()) { response, result in
-                switch result {
-                case .success(let response):
-                    self.lblGreeting.text = "\(self.lblGreeting.text!), \(response.firstName)"
-                    let processor = RoundCornerImageProcessor(cornerRadius: 128)
-                    self.imgProfile.kf.setImage(with: URL(string: response.picture), placeholder: nil, options: [.processor(processor), .transition(.fade(0.2))])
-                //print("My name is \(response["name"])")
-                case .failed(let error):
-                    print("Custom Graph Request Failed: \(error)")
-                }
-            }
-            connection.start()
-        }
+        // TODO: - Get Name and Profile Pic from Graph API
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -104,31 +86,10 @@ extension InterestViewController: UICollectionViewDelegate, UICollectionViewData
         collectionView.deselectItem(at: indexPath, animated: false)
         self.selectedInterest = interests[indexPath.row]
         
-        AppEventsLogger.log(AppEvent.searched(contentId: nil, contentData: nil, contentType: nil, searchedString: self.selectedInterest, successful: true, valueToSum: 0, extraParameters: AppEvent.ParametersDictionary()))
+        // TODO: - Submit Searched App Event
         performSegue(withIdentifier: "showNews", sender: nil)
     }
     
 }
+// TODO: - Add Custom GraphRequest
 
-struct ProfileRequest: GraphRequestProtocol {
-    struct Response: GraphResponseProtocol {
-        var firstName: String = ""
-        var picture: String = ""
-        init(rawResponse: Any?) {
-            if let dict = rawResponse as? [String: Any]{
-                self.firstName = dict["first_name"] as? String ?? ""
-                if let picJson = dict["picture"] as? [String: Any] {
-                    if let picData = picJson["data"] as? [String: Any] {
-                        self.picture = picData["url"] as? String ?? ""
-                    }
-                }
-            }
-        }
-    }
-    
-    var graphPath = "/me"
-    public var parameters: [String : Any]? = ["fields": "first_name, picture.type(large)"]
-    public var accessToken = AccessToken.current
-    var httpMethod: GraphRequestHTTPMethod = .GET
-    var apiVersion: GraphAPIVersion = .defaultVersion
-}

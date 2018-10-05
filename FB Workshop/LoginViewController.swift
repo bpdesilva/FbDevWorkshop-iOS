@@ -7,14 +7,10 @@
 //
 
 import UIKit
-import FacebookLogin
-import AccountKit
 
 class LoginViewController: UIViewController {
     
-    fileprivate var accountKit = AKFAccountKit(responseType: .accessToken)
-    fileprivate var pendingLoginViewController: AKFViewController? = nil
-    fileprivate var showAccountOnAppear = false
+    // TODO: - Add AccountKit Fields
     
     @IBOutlet weak var btnFacebook: UIButton!
     @IBOutlet weak var btnEmail: UIButton!
@@ -25,8 +21,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        showAccountOnAppear = accountKit.currentAccessToken != nil
-        pendingLoginViewController = accountKit.viewControllerForLoginResume()
+        // TODO: - Add Account Kit fields init
         
         imgPhone.image = imgPhone.image!.withRenderingMode(.alwaysTemplate)
         imgPhone.tintColor = UIColor.white
@@ -40,40 +35,23 @@ class LoginViewController: UIViewController {
     
     // MARK: - Actions
     @IBAction func btnFacebook_Tap(_ sender: Any) {
-        let loginManager = LoginManager()
-        loginManager.logIn(readPermissions: [.publicProfile], viewController: self) { loginResult in
-            switch loginResult {
-            case .failed(let error):
-                print(error)
-            case .cancelled:
-                print("User cancelled login.")
-            case .success( _, _, _):
-                self.fromAccountKit = false
-                self.performSegue(withIdentifier: "showInterests", sender: nil)
-            }
-        }
+        // TODO: - Add Login with facebook Logic
+        
+        self.performSegue(withIdentifier: "showInterests", sender: nil)
+        
     }
     
     @IBAction func btnEmail_Tap(_ sender: Any) {
-        let viewController = accountKit.viewControllerForEmailLogin(withEmail: nil, state: nil)
-        prepareLoginViewController(viewController)
-        present(viewController, animated: true, completion: nil)
+        // TODO: - Add Login with email Logic
+        self.performSegue(withIdentifier: "showInterests", sender: nil)
     }
     
     @IBAction func btnPhone_Tap(_ sender: Any) {
-        let viewController = accountKit.viewControllerForPhoneLogin(with: nil, state: nil)
-        prepareLoginViewController(viewController)
-        present(viewController, animated: true, completion: nil)
+        // TODO: - Add Login with mobile Logic
+        self.performSegue(withIdentifier: "showInterests", sender: nil)
     }
     
-    
-    fileprivate func prepareLoginViewController(_ loginViewController: AKFViewController) {
-        loginViewController.delegate = self
-        
-        loginViewController.enableSendToFacebook = true
-        loginViewController.enableGetACall = true
-        
-    }
+    // TODO: - Add Account Kit view controller preparation function
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showInterests" {
@@ -87,27 +65,8 @@ class LoginViewController: UIViewController {
     
 }
 
-extension LoginViewController: AKFViewControllerDelegate {
-    func viewController(_ viewController: (UIViewController & AKFViewController)!,
-                        didCompleteLoginWith accessToken: AKFAccessToken!, state: String!) {
-        self.fromAccountKit = true
-        self.performSegue(withIdentifier: "showInterests", sender: nil)
-    }
-    
-    func viewController(_ viewController: (UIViewController & AKFViewController)!, didCompleteLoginWithAuthorizationCode code: String!, state: String!) {
-        self.fromAccountKit = true
-        self.performSegue(withIdentifier: "showInterests", sender: nil)
-        
-    }
-    
-    func viewController(_ viewController: (UIViewController & AKFViewController)!, didFailWithError error: Error!) {
-        print("\(String(describing: viewController)) did fail with error: \(String(describing: error))")
-    }
-    
-    func viewControllerDidCancel(_ viewController: (UIViewController & AKFViewController)!) {
-        print("canceled")
-    }
-}
+// TODO: - Add Account Kit extension
+
 
 
 
