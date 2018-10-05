@@ -18,12 +18,18 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var btnFacebook: UIButton!
     @IBOutlet weak var btnEmail: UIButton!
+    @IBOutlet weak var imgPhone: UIImageView!
+    
+    var fromAccountKit = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         showAccountOnAppear = accountKit.currentAccessToken != nil
         pendingLoginViewController = accountKit.viewControllerForLoginResume()
+        
+        imgPhone.image = imgPhone.image!.withRenderingMode(.alwaysTemplate)
+        imgPhone.tintColor = UIColor.white
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,8 +40,6 @@ class LoginViewController: UIViewController {
     
     // MARK: - Actions
     @IBAction func btnFacebook_Tap(_ sender: Any) {
-        self.performSegue(withIdentifier: "showInterests", sender: nil)
-        return
         let loginManager = LoginManager()
         loginManager.logIn(readPermissions: [.publicProfile], viewController: self) { loginResult in
             switch loginResult {
@@ -43,11 +47,8 @@ class LoginViewController: UIViewController {
                 print(error)
             case .cancelled:
                 print("User cancelled login.")
-            case .success(let grantedPermissions, let declinedPermissions, let accessToken):
-                print(grantedPermissions)
-                print(declinedPermissions)
-                print(accessToken)
-                print("Logged in!")
+            case .success( _, _, _):
+                self.fromAccountKit = false
                 self.performSegue(withIdentifier: "showInterests", sender: nil)
             }
         }
@@ -59,31 +60,54 @@ class LoginViewController: UIViewController {
         present(viewController, animated: true, completion: nil)
     }
     
+    @IBAction func btnPhone_Tap(_ sender: Any) {
+        let viewController = accountKit.viewControllerForPhoneLogin(with: nil, state: nil)
+        prepareLoginViewController(viewController)
+        present(viewController, animated: true, completion: nil)
+    }
+    
+    
     fileprivate func prepareLoginViewController(_ loginViewController: AKFViewController) {
         loginViewController.delegate = self
+        
+        loginViewController.enableSendToFacebook = true
+        loginViewController.enableGetACall = true
+        
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showInterests" {
+            if let viewController = segue.destination as? InterestViewController {
+                viewController.setup(forAccountKit: self.fromAccountKit)
+            }
+        }
+    }
     
     
     
 }
-
 
 extension LoginViewController: AKFViewControllerDelegate {
-    private func viewController(_ viewController: UIViewController!, didCompleteLoginWith accessToken: AKFAccessToken!, state: String!) {
-        print("Login succeded")
+    func viewController(_ viewController: (UIViewController & AKFViewController)!,
+                        didCompleteLoginWith accessToken: AKFAccessToken!, state: String!) {
+        self.fromAccountKit = true
+        self.performSegue(withIdentifier: "showInterests", sender: nil)
     }
     
-    private func viewController(_ viewController: UIViewController!, didFailWithError error: Error!) {
-        print("\(String(describing: viewController)) did fail with error: \(error)")
+    func viewController(_ viewController: (UIViewController & AKFViewController)!, didCompleteLoginWithAuthorizationCode code: String!, state: String!) {
+        self.fromAccountKit = true
+        self.performSegue(withIdentifier: "showInterests", sender: nil)
+        
+    }
+    
+    func viewController(_ viewController: (UIViewController & AKFViewController)!, didFailWithError error: Error!) {
+        print("\(String(describing: viewController)) did fail with error: \(String(describing: error))")
+    }
+    
+    func viewControllerDidCancel(_ viewController: (UIViewController & AKFViewController)!) {
+        print("canceled")
     }
 }
+
+
+

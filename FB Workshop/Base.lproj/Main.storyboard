@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="R5T-sb-10M">
-                                <rect key="frame" x="20" y="285.5" width="335" height="116"/>
+                                <rect key="frame" x="20" y="252.5" width="335" height="182"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TFJ-8n-hi6">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="50"/>
@@ -83,8 +83,40 @@
                                             <constraint firstAttribute="bottom" secondItem="NVG-GT-CUc" secondAttribute="bottom" id="hHq-Kq-cl7"/>
                                         </constraints>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rcf-hK-ZWo">
+                                        <rect key="frame" x="0.0" y="132" width="335" height="50"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="fill" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jHZ-df-wPc">
+                                                <rect key="frame" x="0.0" y="0.0" width="335" height="50"/>
+                                                <color key="backgroundColor" red="0.29019607843137252" green="0.76862745098039209" blue="0.6470588235294118" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                <inset key="titleEdgeInsets" minX="80" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="Login with Phone"/>
+                                                <connections>
+                                                    <action selector="btnPhone_Tap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dLk-lG-gwC"/>
+                                                </connections>
+                                            </button>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_phone" translatesAutoresizingMaskIntoConstraints="NO" id="eD0-tj-TBv">
+                                                <rect key="frame" x="15" y="10" width="30" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="eD0-tj-TBv" secondAttribute="height" multiplier="1:1" id="pd0-gn-Rin"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="eD0-tj-TBv" firstAttribute="top" secondItem="jHZ-df-wPc" secondAttribute="top" constant="10" id="GdB-UB-nRt"/>
+                                            <constraint firstAttribute="trailing" secondItem="jHZ-df-wPc" secondAttribute="trailing" id="II4-qK-PBB"/>
+                                            <constraint firstItem="eD0-tj-TBv" firstAttribute="leading" secondItem="jHZ-df-wPc" secondAttribute="leading" constant="15" id="IzA-py-j7F"/>
+                                            <constraint firstItem="jHZ-df-wPc" firstAttribute="bottom" secondItem="eD0-tj-TBv" secondAttribute="bottom" constant="10" id="cbW-dw-u1a"/>
+                                            <constraint firstItem="jHZ-df-wPc" firstAttribute="leading" secondItem="Rcf-hK-ZWo" secondAttribute="leading" id="oCW-6p-Rur"/>
+                                            <constraint firstAttribute="bottom" secondItem="jHZ-df-wPc" secondAttribute="bottom" id="s9O-oT-Q7E"/>
+                                            <constraint firstItem="jHZ-df-wPc" firstAttribute="top" secondItem="Rcf-hK-ZWo" secondAttribute="top" id="y3A-Mg-16z"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="Rcf-hK-ZWo" firstAttribute="height" secondItem="xjL-hk-zRs" secondAttribute="height" id="l9N-7r-Xb1"/>
                                     <constraint firstItem="xjL-hk-zRs" firstAttribute="height" secondItem="TFJ-8n-hi6" secondAttribute="height" id="mSm-km-cW6"/>
                                 </constraints>
                             </stackView>
@@ -102,6 +134,7 @@
                     <connections>
                         <outlet property="btnEmail" destination="NVG-GT-CUc" id="2gn-Pt-xNI"/>
                         <outlet property="btnFacebook" destination="PHo-1U-NiE" id="4eA-5w-C8m"/>
+                        <outlet property="imgPhone" destination="eD0-tj-TBv" id="Txd-2t-cTH"/>
                         <segue destination="BV7-Al-8jk" kind="show" identifier="showInterests" id="F4g-WG-5Va"/>
                     </connections>
                 </viewController>
@@ -169,6 +202,9 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="cvInterestContainer" destination="Xdy-us-hE5" id="u5M-so-ywn"/>
+                        <outlet property="imageWidthConstraint" destination="90D-QG-i74" id="cHJ-x8-fBY"/>
+                        <outlet property="imgProfile" destination="77U-kT-rQP" id="NKl-2m-2B8"/>
+                        <outlet property="lblGreeting" destination="2cs-2C-G61" id="BZ2-p0-bmX"/>
                         <segue destination="ZxE-zV-SSc" kind="show" identifier="showNews" id="mvc-Jn-tYK"/>
                     </connections>
                 </viewController>
@@ -231,5 +267,6 @@
     <resources>
         <image name="logo_email" width="24" height="24"/>
         <image name="logo_fb" width="114" height="114"/>
+        <image name="logo_phone" width="49.5" height="49.5"/>
     </resources>
 </document>

@@ -10,6 +10,7 @@ import UIKit
 import MaterialComponents.MaterialCards
 import Kingfisher
 import FacebookShare
+import FacebookCore
 
 class NewsTableViewCell: UITableViewCell {
     
@@ -71,6 +72,13 @@ class NewsTableViewCell: UITableViewCell {
         shareDialog.completion = { result in
             // Handle share results
         }
+        
+        let params : AppEvent.ParametersDictionary = [
+            "title" : self.newsItem.title,
+            "source" : self.newsItem.source.name
+        ]
+        let event = AppEvent(name: "shared", parameters: params)
+        AppEventsLogger.log(event)
         
         try! shareDialog.show()
     }
