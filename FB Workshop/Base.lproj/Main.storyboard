@@ -134,6 +134,7 @@
                     <connections>
                         <outlet property="btnEmail" destination="NVG-GT-CUc" id="2gn-Pt-xNI"/>
                         <outlet property="btnFacebook" destination="PHo-1U-NiE" id="4eA-5w-C8m"/>
+                        <outlet property="btnPhone" destination="jHZ-df-wPc" id="Esq-M3-dge"/>
                         <outlet property="imgPhone" destination="eD0-tj-TBv" id="Txd-2t-cTH"/>
                         <segue destination="BV7-Al-8jk" kind="show" identifier="showInterests" id="F4g-WG-5Va"/>
                     </connections>
